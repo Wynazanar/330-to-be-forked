@@ -1,0 +1,17 @@
+#!/bin/bash
+
+read -p "Укажите название курса: " courseName
+courseDir="./$courseName"
+
+mkdir "$courseDir"
+mkdir "$courseDir/Студенты"
+touch "$courseDir/Оценки.txt"
+echo "Курс '$courseName' создана."
+
+read -p "Количество студентов в группе: " studentCount
+
+for ((i=1; i <= studentCount; i++)); do
+	read -p "Введите имя студента №$i: " studentName
+	read -p "Оценки для $studentName: " grade
+	echo "Студент $i: $studentName - $grade" >> "$courseDir/Оценки.txt"
+done
